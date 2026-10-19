@@ -12,9 +12,10 @@ const CATEGORIES = [
   { name: 'Income', icon: 'DollarSign', color: '#22c55e' },
 ];
 
+// Add this with your other constants
 const TRANSACTION_TYPES = {
-  EXPENSE: 'expense',
   INCOME: 'income',
+  EXPENSE: 'expense',
 };
 
 const sampleTransactions = [
@@ -126,22 +127,22 @@ export const AppProvider = ({ children }) => {
     return category ? category.color : '#6b7280';
   };
 
-  const getBalance = () => {
-    if (!user) return 0;
-    const income = transactions
-      .filter(t => t.type === 'income')
-      .reduce((sum, t) => sum + parseFloat(t.amount), 0);
-    const expenses = transactions
-      .filter(t => t.type === 'expense')
-      .reduce((sum, t) => sum + parseFloat(t.amount), 0);
-    return user.balance + income - expenses;
-  };
+ const getBalance = () => {
+  if (!user) return 0;
+  const income = transactions
+    .filter(t => t.type === TRANSACTION_TYPES.INCOME)
+    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+  const expenses = transactions
+    .filter(t => t.type === TRANSACTION_TYPES.EXPENSE)
+    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+  return user.balance + income - expenses;
+};
 
-  const getTotalExpenses = () => {
-    return transactions
-      .filter(t => t.type === 'expense')
-      .reduce((sum, t) => sum + parseFloat(t.amount), 0);
-  };
+const getTotalExpenses = () => {
+  return transactions
+    .filter(t => t.type === TRANSACTION_TYPES.EXPENSE)
+    .reduce((sum, t) => sum + parseFloat(t.amount), 0);
+};
 
   const getExpensesByCategory = () => {
     const categories = {};
