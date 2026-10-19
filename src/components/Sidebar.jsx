@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import {  LogOut, Star,HandCoins , LogIn } from 'lucide-react';
+import {  LogOut, LogIn } from 'lucide-react';
 import Logo from "./Logo";
 
 const NAV_LINKS = [

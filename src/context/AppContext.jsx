@@ -1,6 +1,5 @@
 
 import React, { createContext, useState, useEffect } from 'react';
-import { format } from 'date-fns';
 
 const CATEGORIES = [
   { name: 'Food & Dining', icon: 'Utensils', color: '#ef4444' },
